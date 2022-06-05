@@ -1,4 +1,4 @@
-package uz.uzgps.testredis;
+package testredis;
 
 import io.vertx.core.Vertx;
 import io.vertx.junit5.VertxExtension;

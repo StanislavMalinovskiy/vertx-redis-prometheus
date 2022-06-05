@@ -1,4 +1,4 @@
-package uz.uzgps.testredis;
+package testredis;
 
 import io.vertx.core.Future;
 import io.vertx.core.Promise;
@@ -9,10 +9,13 @@ import io.vertx.redis.client.Redis;
 import io.vertx.redis.client.RedisAPI;
 import io.vertx.redis.client.RedisOptions;
 import io.vertx.redis.client.Response;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
 public class RedisClient {
+  private static final Logger LOGGER = LogManager.getLogger(RedisClient.class.getName());
 
   private Vertx vertx;
   private RedisOptions redisOptions;
@@ -43,8 +46,6 @@ public class RedisClient {
     return promise.future();
   }
 
-
-  long maxVal;
   public Future<Void> addValue(String key, String value) {
     Promise<Void> promise = Promise.promise();
 
@@ -53,12 +54,12 @@ public class RedisClient {
         if (res.succeeded()) {
           promise.complete();
         } else {
-          System.out.println(res.cause().toString());
+          LOGGER.error(res.cause());
           promise.fail(res.cause());
         }
       });
     } catch (Exception e) {
-      System.out.println(e);
+      LOGGER.error(e);
     }
 
     return promise.future();
@@ -105,7 +106,7 @@ public class RedisClient {
         }
       });
     } catch (Exception e) {
-      System.out.println(e);
+      LOGGER.error(e);
     }
 
     return promise.future();

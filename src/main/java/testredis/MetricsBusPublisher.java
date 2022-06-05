@@ -1,4 +1,4 @@
-package uz.uzgps.testredis;
+package testredis;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;

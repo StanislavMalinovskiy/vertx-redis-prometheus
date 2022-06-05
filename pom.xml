@@ -4,7 +4,6 @@
      xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>uz.uzgps</groupId>
   <artifactId>test-redis</artifactId>
   <version>1.0.0</version>
 
@@ -19,7 +18,7 @@
     <vertx.version>4.3.1</vertx.version>
     <junit-jupiter.version>5.7.0</junit-jupiter.version>
 
-    <main.verticle>uz.uzgps.testredis.MainVerticle</main.verticle>
+    <main.verticle>testredis.MainVerticle</main.verticle>
     <launcher.class>io.vertx.core.Launcher</launcher.class>
 
     <micrometer.version>1.1.0</micrometer.version>
@@ -89,6 +88,17 @@
       <artifactId>junit-jupiter-engine</artifactId>
       <version>${junit-jupiter.version}</version>
       <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.17.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-slf4j-impl</artifactId>
+      <version>2.17.0</version>
     </dependency>
   </dependencies>
 

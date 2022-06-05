@@ -1,4 +1,4 @@
-package testredis;
+package testredis.metrics;
 
 import io.vertx.core.Launcher;
 import io.vertx.core.VertxOptions;

@@ -17,10 +17,10 @@ import io.vertx.micrometer.PrometheusScrapingHandler;
 import io.vertx.micrometer.backends.BackendRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import testredis.metrics.MetricsBusPublisher;
 import testredis.router.RshbRouter;
 import testredis.router.TestRouter;
 
-@SuppressWarnings("ALL")
 public class MainVerticle extends AbstractVerticle {
   private static final Logger LOGGER = LogManager.getLogger(MainVerticle.class.getName());
 
@@ -52,7 +52,10 @@ public class MainVerticle extends AbstractVerticle {
         }
       });
 
-    vertx.deployVerticle(HttpSharedServer.class.getName(), new DeploymentOptions().setInstances(6).setWorker(true).setWorkerPoolName("worker_1"));
+    vertx.deployVerticle(HttpSharedServer.class.getName(),
+      new DeploymentOptions().setInstances(2)
+        .setWorker(true)
+        .setWorkerPoolName("worker_1"));
   }
 
   private Future<Void> createHttpServer(Router mainRouter) {
